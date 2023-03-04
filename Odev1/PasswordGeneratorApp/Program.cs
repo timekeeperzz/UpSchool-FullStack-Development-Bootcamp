@@ -8,8 +8,6 @@ generatedPassword.QuestionsBeforeCreate();
 
 generatedPassword.CreatePassword();
 
-generatedPassword.GetThePassword();
-
 Console.ReadLine();
 
 return 0;
