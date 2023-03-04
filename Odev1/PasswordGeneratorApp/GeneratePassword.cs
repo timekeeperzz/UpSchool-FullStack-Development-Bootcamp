@@ -91,27 +91,28 @@ namespace GeneratePasswordApp
             if(invalid== true)
             {
                 ShowErrorMessage();
-                return;
             }
-
-            if (AddNumbers)
-                CharacterSetBuilder.Append(Numbers);
-            if (AddLowercaseChars)
-                CharacterSetBuilder.Append(LowercaseChars);
-            if (AddUppercaseChars)
-                CharacterSetBuilder.Append(UppercaseChars);
-            if (AddSpecialChars)
-                CharacterSetBuilder.Append(SpecialChars);
-
-            var SetCharacters=CharacterSetBuilder.ToString();
-            for (int i=0;i<length;i++)
+            else
             {
-                var randomIndex = random.Next(SetCharacters.Length);
-                PasswordBuilder.Append(SetCharacters[randomIndex]);
+                if (AddNumbers)
+                    CharacterSetBuilder.Append(Numbers);
+                if (AddLowercaseChars)
+                    CharacterSetBuilder.Append(LowercaseChars);
+                if (AddUppercaseChars)
+                    CharacterSetBuilder.Append(UppercaseChars);
+                if (AddSpecialChars)
+                    CharacterSetBuilder.Append(SpecialChars);
+
+                var SetCharacters=CharacterSetBuilder.ToString();
+                for (int i=0;i<length;i++)
+                {
+                    var randomIndex = random.Next(SetCharacters.Length);
+                    PasswordBuilder.Append(SetCharacters[randomIndex]);
+                }
+
+                Password=PasswordBuilder.ToString();
+                GetThePassword();
             }
-
-            Password=PasswordBuilder.ToString();
-
 
         }
 
@@ -120,7 +121,6 @@ namespace GeneratePasswordApp
             if (string.IsNullOrEmpty(message))
             {
                 Console.WriteLine(Messages.GreetingAndErrorMessages.Lengthless);
-                return;
             }
 
             Console.WriteLine(message);
